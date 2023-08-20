@@ -56,7 +56,7 @@ Explain how others can contribute to your project. This could include informatio
 
 ## License
 
-This project is licensed under the [GNU General Public License v3.0.](https://www.gnu.org/licenses/gpl-3.0.en.html) For more details, see the LICENSE file.
+This project is licensed under the [GNU General Public License v3.0.](https://www.gnu.org/licenses/gpl-3.0.en.html) For more details, see the [COPYING](https://github.com/themightypillow/ebike-compare/blob/main/COPYING) file.
 
 ## Acknowledgements
 
