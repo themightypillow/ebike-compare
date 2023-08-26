@@ -1,0 +1,101 @@
+body {
+  font-family: sans-serif;
+}
+
+body > header {
+  display: grid;
+  grid-template-columns: 300px auto 60px;
+  column-gap: 200px;
+  align-items: center;
+}
+
+#logo {
+  display: flex;
+  align-items: center;
+}
+
+#logo h1 {
+  margin: 0 0 0 10px;
+  font-weight: 500;
+  font-size: 25px;
+}
+
+#search-bar {
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+  padding: 5px 2px;
+}
+
+#search-bar input {
+  width: 100%;
+}
+
+#filters ul {
+  list-style-type: none;
+  padding-left: 10px;
+}
+
+#filters h2 {
+  margin: 0;
+}
+
+#filters header {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  justify-content: space-between;
+}
+
+.bike-card {
+  display: grid;
+  grid-template-columns: 500px auto;
+}
+
+.bike-name {
+  display: flex;
+}
+
+.bike-name h2 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.bike-brand {
+  margin-left: 35px;
+  color: gray;
+  font-weight: 500;
+}
+
+.bike-type {
+  color: gray;
+  font-weight: 500;
+}
+
+#main-info {
+  display: grid;
+  grid-template-columns: 20% auto;
+  column-gap: 50px;
+  margin-top: 25px;
+}
+
+main {
+  display: grid;
+  grid-auto-flow: row;
+}
+
+main header {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  justify-content: space-between;
+  align-items: start;
+}
+
+main header h3 {
+  margin: 0;
+}
+
+#sort {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  column-gap: 10px;
+}
