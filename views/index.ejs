@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+  <body>
+    <header>
+      <div id="logo">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-bike" width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+          <path d="M5 18m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+          <path d="M19 18m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+          <path d="M12 19l0 -4l-3 -3l5 -4l2 3l3 0" />
+          <path d="M17 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+        </svg>
+        <h1>E-Bike Compare</h1>
+      </div>
+      <div id="search-bar">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+          <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
+          <path d="M21 21l-6 -6" />
+        </svg>
+        <input type="text" name="" id="">
+      </div>
+      <div id="compare-area">
+        <button>
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-square-rounded-chevron-down" width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M15 11l-3 3l-3 -3" />
+            <path d="M12 3c7.2 0 9 1.8 9 9s-1.8 9 -9 9s-9 -1.8 -9 -9s1.8 -9 9 -9z" />
+          </svg>
+        </button>
+      </div>
+    </header>
+    <div id="main-info">
+      <aside id="filters">
+        <header>
+          <h2>Filter by</h2>
+          <button>&#10005; Reset filters</button>
+        </header>
+        <hr>
+        <section>
+          <h3>Frame Type</h3>
+          <ul>
+            <li><input type="checkbox" name="" id="">Step Over</li>
+            <li><input type="checkbox" name="" id="">Step Thru</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Class</h3>
+          <ul>
+            <li><input type="checkbox" name="" id="">1</li>
+            <li><input type="checkbox" name="" id="">2</li>
+            <li><input type="checkbox" name="" id="">3</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Gears</h3>
+          <ul>
+            <li><input type="checkbox" name="" id="">7</li>
+            <li><input type="checkbox" name="" id="">8</li>
+            <li><input type="checkbox" name="" id="">9</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Year</h3>
+          <ul>
+            <li><input type="checkbox" name="" id="">2021</li>
+            <li><input type="checkbox" name="" id="">2022</li>
+            <li><input type="checkbox" name="" id="">2023</li>
+          </ul>
+        </section>
+      </aside>
+      <main>
+        <header>
+          <h3><%= locals.bikes.length %> Results</h3>
+          <div id="sort">
+            <h3>Sort by</h3>
+            <select name="" id="">
+              <option value="">Price Low to High</option>
+              <option value="">Price High to Low</option>
+            </select>
+          </div>
+        </header>
+        <% locals.bikes.forEach((bike) => { %>
+        <section class="bike-card">
+          <img src="<%= `/images/${bike.id}.png` %>" alt="<%= `${bike.brand} ${bike.name}` %>">
+          <div>
+            <div class="bike-name">
+              <h2><%= bike.name.toUpperCase() %></h2>
+              <h2 class="bike-brand"><%= bike.brand.toUpperCase() %></h2>
+            </div>
+            <h3>$<%= bike.price %></h3>
+            <h3 class="bike-type"><%= bike.category || 'Unknown' %></h3>
+            <button>
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-square-rounded-plus" width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <path d="M9 12h6" />
+                <path d="M12 9v6" />
+                <path d="M12 3c7.2 0 9 1.8 9 9s-1.8 9 -9 9s-9 -1.8 -9 -9s1.8 -9 9 -9z" />
+              </svg>
+            </button>
+          </div>
+        </section>
+        <hr>
+        <% }); %>
+      </main>
+    </div>
+
+    <!-- <footer>
+      Coded by <a href="https://github.com/themightypillow/">Cheri</a>.
+    </footer> -->
+  </body>
+</html>
