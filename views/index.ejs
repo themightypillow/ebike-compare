@@ -95,11 +95,12 @@
       <main>
         <header>
           <h3><%= locals.bikes.length %> Results</h3>
-          <div id="sort">
+          <div id="sort-div">
             <h3>Sort by</h3>
-            <select name="" id="">
-              <option value="">Price Low to High</option>
-              <option value="">Price High to Low</option>
+            <select id="sort">
+              <option value="brand-az" selected>Brand A to Z</option>
+              <option value="price-low">Price Low to High</option>
+              <option value="price-high">Price High to Low</option>
             </select>
           </div>
         </header>

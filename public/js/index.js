@@ -1,3 +1,9 @@
+const sortBox = document.querySelector('#sort');
+
+sortBox.addEventListener('change', () => {
+  fetchContent();
+});
+
 const priceBoxes = document.querySelectorAll('.price-box');
 
 priceBoxes.forEach(box => {
@@ -40,7 +46,7 @@ resetBtn.addEventListener('click', () => {
 function fetchContent() {
   let priceQuery = '';
   if(btnPressed) priceQuery = buildPriceQuery();
-  const queryString = `${buildCheckboxQuery()}${priceQuery ? '&' + priceQuery : ''}`;
+  const queryString = `${buildCheckboxQuery()}${priceQuery ? '&' + priceQuery : ''}&sort=${sortBox.value}`;
   fetch(`/filter?${queryString}`)
     .then(res => {
       if(!res.ok) {

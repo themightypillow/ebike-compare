@@ -8,24 +8,37 @@ function getBike(id) {
   return bike;
 }
 
-function getBikes(conditions) {
-  let query = 'SELECT id, name, brand, price, category FROM models';
-  if(!isEmpty(conditions)) query += ` WHERE ${parseConditions(conditions)}`;
+function getBikes(data) {
+  const query = parseData(data);
   const db = new sqlite(path.resolve(__dirname, '..', 'database', 'ebikes.db'), { fileMustExist: true, readonly: true}); 
   const bikes = db.prepare(query).all();
   db.close();
   return bikes;
 }
 
-function parseConditions(query) {
+function parseData(data) {
+  let query = ['SELECT id, name, brand, price, category FROM models'];
+  if(!isEmpty(data)) {
+    if(data.sort) {
+      query[2] = ` ORDER BY ${setSort(data.sort)}`;
+      delete data.sort;
+    }
+    if(!isEmpty(data)) {
+      query[1] = ` WHERE ${parseSearchConditions(data)}`;
+    }
+  }
+  return query.join("");
+}
+
+function parseSearchConditions(data) {
   let sql_query = [];
-  Object.keys(query).forEach(group => {
-    if(Array.isArray(query[group])) {
-      const orStatement = query[group].map(val => makeColumnQuery(group, val)).join(' OR ');
+  Object.keys(data).forEach(group => {
+    if(Array.isArray(data[group])) {
+      const orStatement = data[group].map(val => makeColumnQuery(group, val)).join(' OR ');
       sql_query.push(`(${orStatement})`);
     }
     else {
-      sql_query.push(makeColumnQuery(group, query[group]));
+      sql_query.push(makeColumnQuery(group, data[group]));
     }
   });
   return sql_query.join(' AND ');
@@ -41,6 +54,17 @@ function makeColumnQuery(group, val) {
       else return `${group} BETWEEN ${min} AND ${max}`;
     default:
       return `${group} = '${val}'`;
+  }
+}
+
+function setSort(str) {
+  switch(str){
+    case 'brand-az':
+      return 'brand ASC, name ASC'
+    case 'price-low':
+      return 'price ASC'
+    case 'price-high':
+      return 'price DESC'
   }
 }
 

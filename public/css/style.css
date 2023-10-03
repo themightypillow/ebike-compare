@@ -91,7 +91,7 @@ main header h3 {
   margin: 0;
 }
 
-#sort {
+#sort-div {
   display: grid;
   grid-template-columns: repeat(2, auto);
   column-gap: 10px;

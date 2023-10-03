@@ -8,7 +8,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
-  res.render('index', { bikes: database.getBikes() });
+  res.render('index', { bikes: database.getBikes({sort: 'brand-az'}) });
 });
 
 app.get('/filter', (req, res) => {
