@@ -133,3 +133,24 @@ main header h3 {
   right: 15px;
   visibility: hidden;
 }
+
+#price-ul {
+  display: grid;
+  grid-template-columns: 25% 25% 10%;
+  column-gap: 5px;
+}
+
+#price-ul div {
+  display: flex;
+  border: 1px solid black;
+}
+
+#price-ul input {
+  border: none;
+  width: 100%;
+}
+
+#price-ul input:focus {
+  outline: none;
+}
+

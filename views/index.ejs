@@ -42,28 +42,53 @@
       <aside id="filters">
         <header>
           <h2>Filter by</h2>
-          <button>&#10005; Reset filters</button>
+          <button id="reset-btn">&#10005; Reset filters</button>
         </header>
         <hr>
         <section>
+          <h3>Price</h3>
+          <ul id="price-ul">
+            <div>$<input type="text" class="price-box"></div>
+            <div>$<input type="text" class="price-box"></div>
+            <button id="price-btn">Go</button>
+          </ul>
           <h3>Frame Type</h3>
           <ul>
-            <li><input type="checkbox" data-group="frame" data-value="so">Step Over</li>
-            <li><input type="checkbox" data-group="frame" data-value="st">Step Thru</li>
+            <li><input type="checkbox" data-group="frame" data-value="so">step over</li>
+            <li><input type="checkbox" data-group="frame" data-value="st">step thru</li>
           </ul>
           <h3>Brand</h3>
           <ul>
             <li><input type="checkbox" data-group="brand" data-value="aventon">Aventon</li>
+            <li><input type="checkbox" data-group="brand" data-value="blix">Blix</li>
             <li><input type="checkbox" data-group="brand" data-value="charge">Charge</li>
+            <li><input type="checkbox" data-group="brand" data-value="electric bike co">Electric Bike Co</li>
             <li><input type="checkbox" data-group="brand" data-value="euphree">Euphree</li>
             <li><input type="checkbox" data-group="brand" data-value="heybike">Heybike</li>
             <li><input type="checkbox" data-group="brand" data-value="juiced">Juiced</li>
             <li><input type="checkbox" data-group="brand" data-value="lectric">Lectric</li>
             <li><input type="checkbox" data-group="brand" data-value="mokwheel">Mokwheel</li>
             <li><input type="checkbox" data-group="brand" data-value="priority">Priority</li>
-            <li><input type="checkbox" data-group="brand" data-value="rad-power-bikes">Rad Power</li>
+            <li><input type="checkbox" data-group="brand" data-value="rad power">Rad Power</li>
             <li><input type="checkbox" data-group="brand" data-value="ride1up">Ride1Up</li>
             <li><input type="checkbox" data-group="brand" data-value="velotric">Velotric</li>
+          </ul>
+          <h3>Color</h3>
+          <ul>
+            <li><input type="checkbox" data-group="color" data-value="black">black</li>
+            <li><input type="checkbox" data-group="color" data-value="blue">blue</li>
+            <li><input type="checkbox" data-group="color" data-value="brown">brown</li>
+            <li><input type="checkbox" data-group="color" data-value="camo">camo</li>
+            <li><input type="checkbox" data-group="color" data-value="green">green</li>
+            <li><input type="checkbox" data-group="color" data-value="grey">grey</li>
+            <li><input type="checkbox" data-group="color" data-value="mint">mint</li>
+            <li><input type="checkbox" data-group="color" data-value="orange">orange</li>
+            <li><input type="checkbox" data-group="color" data-value="pink">pink</li>
+            <li><input type="checkbox" data-group="color" data-value="purple">purple</li>
+            <li><input type="checkbox" data-group="color" data-value="red">red</li>
+            <li><input type="checkbox" data-group="color" data-value="tan">tan</li>
+            <li><input type="checkbox" data-group="color" data-value="white">white</li>
+            <li><input type="checkbox" data-group="color" data-value="yellow">yellow</li>
           </ul>
         </section>
       </aside>

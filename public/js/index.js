@@ -1,14 +1,46 @@
-const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+const priceBoxes = document.querySelectorAll('.price-box');
 
-checkboxes.forEach((checkbox) => {
-  checkbox.addEventListener('change', () => {
-    fetchContent();
+priceBoxes.forEach(box => {
+  box.addEventListener('input', (e) => {
+    e.target.value = e.target.value.replace(/[^0-9]/g, '');
   });
 });
 
+const priceBtn = document.querySelector('#price-btn');
+let btnPressed = false;
+let minPrice, maxPrice;
+
+priceBtn.addEventListener('click', () => {
+  btnPressed = true;
+  [minPrice, maxPrice] = [priceBoxes[0].value, priceBoxes[1].value];
+  fetchContent();
+});
+
+const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
+checkboxes.forEach(checkbox => {
+  checkbox.addEventListener('change', () => fetchContent());
+});
+
+const resetBtn = document.querySelector('#reset-btn');
+
+resetBtn.addEventListener('click', () => {
+  priceBoxes.forEach(box => {
+    box.value = '';
+  });
+  btnPressed = false;
+  minPrice = '';
+  maxPrice = '';
+  checkboxes.forEach(box => {
+    box.checked = false;
+  });
+  fetchContent();
+});
+
 function fetchContent() {
-  const checkedCheckboxes = [...checkboxes].filter(box => box.checked);
-  const queryString = checkedCheckboxes.map(box => `${box.dataset.group}=${box.dataset.value}`).join('&');
+  let priceQuery = '';
+  if(btnPressed) priceQuery = buildPriceQuery();
+  const queryString = `${buildCheckboxQuery()}${priceQuery ? '&' + priceQuery : ''}`;
   fetch(`/filter?${queryString}`)
     .then(res => {
       if(!res.ok) {
@@ -22,6 +54,15 @@ function fetchContent() {
     .catch(error => {
       console.error(`Error fetching data: ${error}`);
     });
+}
+
+function buildPriceQuery() {
+  if(!minPrice && !maxPrice) return '';
+  return `price=${minPrice ? minPrice : 0},${maxPrice ? maxPrice : 'all'}`;
+}
+
+function buildCheckboxQuery() {
+  return [...checkboxes].filter(box => box.checked).map(box => `${box.dataset.group}=${box.dataset.value}`).join('&');
 }
 
 function updateContent(bikes) {
